@@ -1,0 +1,122 @@
+---
+import { loadResume } from "../lib/resume";
+
+const r = loadResume();
+
+// Try these common fields; adjust once we see your YAML keys:
+const name = r?.basics?.name ?? r?.name ?? "Your Name";
+const title = r?.basics?.label ?? r?.title ?? "";
+const location = r?.basics?.location?.city
+  ? `${r.basics.location.city}${r.basics.location.region ? ", " + r.basics.location.region : ""}`
+  : (r?.location ?? "");
+const summary = r?.basics?.summary ?? r?.summary ?? "";
+
+const work = r?.work ?? r?.experience ?? [];
+const education = r?.education ?? [];
+const projects = r?.projects ?? [];
+const skills = r?.skills ?? [];
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{name} — Resume</title>
+    <link rel="stylesheet" href="/resume.css" />
+  </head>
+
+  <body>
+    <main class="page">
+      <header class="header">
+        <div>
+          <h1>{name}</h1>
+          {title && <p class="title">{title}</p>}
+          {(location) && <p class="meta">{location}</p>}
+        </div>
+
+        <a class="btn" href="/resume.pdf" download>Download PDF</a>
+      </header>
+
+      {summary && (
+        <section>
+          <h2>Summary</h2>
+          <p>{summary}</p>
+        </section>
+      )}
+
+      {skills?.length > 0 && (
+        <section>
+          <h2>Skills</h2>
+          <ul class="chips">
+            {skills.map((s:any) => <li>{s?.name ?? s}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {work?.length > 0 && (
+        <section>
+          <h2>Experience</h2>
+          {work.map((w:any) => (
+            <article class="item">
+              <div class="item-head">
+                <div>
+                  <h3>{w?.position ?? w?.title}</h3>
+                  <div class="sub">
+                    {w?.name ?? w?.company}
+                    {(w?.location) ? ` • ${w.location}` : ""}
+                  </div>
+                </div>
+                <div class="dates">
+                  {(w?.startDate ?? w?.start) ?? ""}{(w?.endDate ?? w?.end) ? ` — ${(w.endDate ?? w.end)}` : " — Present"}
+                </div>
+              </div>
+
+              {(w?.summary) && <p>{w.summary}</p>}
+
+              {(w?.highlights?.length || w?.bullets?.length) && (
+                <ul>
+                  {(w.highlights ?? w.bullets).map((b:string) => <li>{b}</li>)}
+                </ul>
+              )}
+            </article>
+          ))}
+        </section>
+      )}
+
+      {projects?.length > 0 && (
+        <section>
+          <h2>Projects</h2>
+          {projects.map((p:any) => (
+            <article class="item">
+              <div class="item-head">
+                <h3>{p?.name ?? p?.title}</h3>
+                {(p?.url) && <a class="link" href={p.url} target="_blank" rel="noopener">Link</a>}
+              </div>
+              {(p?.description) && <p>{p.description}</p>}
+              {(p?.highlights?.length) && <ul>{p.highlights.map((b:string) => <li>{b}</li>)}</ul>}
+            </article>
+          ))}
+        </section>
+      )}
+
+      {education?.length > 0 && (
+        <section>
+          <h2>Education</h2>
+          {education.map((e:any) => (
+            <article class="item">
+              <div class="item-head">
+                <h3>{e?.institution ?? e?.school}</h3>
+                <div class="dates">{(e?.startDate ?? e?.start) ?? ""}{(e?.endDate ?? e?.end) ? ` — ${(e.endDate ?? e.end)}` : ""}</div>
+              </div>
+              <div class="sub">{e?.area ?? e?.degree ?? ""}</div>
+            </article>
+          ))}
+        </section>
+      )}
+
+      <footer class="footer">
+        <span>Last updated: {r?.meta?.lastUpdated ?? ""}</span>
+      </footer>
+    </main>
+  </body>
+</html>
+

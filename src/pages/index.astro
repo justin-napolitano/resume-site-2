@@ -1,11 +1,167 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import r from "../data/resume.json";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const SHOW_EMAIL = false; // you included it in JSON; flip true if you want it visible
+const SHOW_PHONE = false; // flip true if you want it visible
+
+const h = r.header;
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{h.name} — Resume</title>
+
+    <meta name="description" content={`${h.name} — Resume`} />
+    <link rel="canonical" href="https://www.justin-napolitano.com/resume/" />
+
+    <!-- OpenGraph (optional but nice) -->
+    <meta property="og:title" content={`${h.name} — Resume`} />
+    <meta property="og:description" content={`${h.name} — Resume`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.justin-napolitano.com/resume/" />
+    <meta property="og:image" content="https://www.justin-napolitano.com/images/og.png" />
+
+    <link rel="stylesheet" href="/resume.css" />
+  </head>
+
+  <body>
+    <main class="page">
+      <header class="top">
+        <div class="id">
+          <h1>{h.name}</h1>
+          <div class="meta">
+            {h.location && <span>{h.location}</span>}
+            {(SHOW_EMAIL && h.email) && <span> • <a href={`mailto:${h.email}`}>{h.email}</a></span>}
+            {(SHOW_PHONE && h.phone) && <span> • <a href={`tel:${h.phone}`}>{h.phone}</a></span>}
+          </div>
+
+          <div class="meta">
+            {h.linkedin_url && <a class="link" href={h.linkedin_url} target="_blank" rel="noopener">LinkedIn</a>}
+            {h.github_url && <a class="link" href={h.github_url} target="_blank" rel="noopener">GitHub</a>}
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="/resume.pdf" download>Download PDF</a>
+        </div>
+      </header>
+
+      {r.summary?.length > 0 && (
+        <section>
+          <h2>Summary</h2>
+          <ul>
+            {r.summary.map((s) => <li>{s}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {r.experience?.length > 0 && (
+        <section>
+          <h2>Experience</h2>
+          {r.experience.map((x) => (
+            <article class="item">
+              <div class="itemHead">
+                <div>
+                  <h3>{x.title} — {x.company}</h3>
+                  <div class="sub">{x.location}</div>
+                </div>
+                <div class="dates">{x.start} — {x.end}</div>
+              </div>
+              {x.bullets?.length > 0 && (
+                <ul>
+                  {x.bullets.map((b) => <li>{b}</li>)}
+                </ul>
+              )}
+              {x.technologies?.length > 0 && (
+                <div class="chips">
+                  {x.technologies.map((t) => <span class="chip">{t}</span>)}
+                </div>
+              )}
+            </article>
+          ))}
+        </section>
+      )}
+
+      {r.projects?.length > 0 && (
+        <section>
+          <h2>Projects</h2>
+          {r.projects.map((p) => (
+            <article class="item">
+              <div class="itemHead">
+                <div>
+                  <h3>{p.name}</h3>
+                  {p.context && <div class="sub">{p.context}</div>}
+                </div>
+              </div>
+
+              {p.bullets?.length > 0 && (
+                <ul>
+                  {p.bullets.map((b) => <li>{b}</li>)}
+                </ul>
+              )}
+
+              {p.technologies?.length > 0 && (
+                <div class="chips">
+                  {p.technologies.map((t) => <span class="chip">{t}</span>)}
+                </div>
+              )}
+            </article>
+          ))}
+        </section>
+      )}
+
+      {r.skills?.length > 0 && (
+        <section>
+          <h2>Skills</h2>
+
+          {r.skills.map((s) => (
+            <article class="skillBlock">
+              <h3 class="skillTitle">{s.area}</h3>
+              <div class="chips">
+                {s.items.map((i) => (
+                  <span class="chip" title={`${i.years} yrs • level ${i.level}`}>
+                    {i.name}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </section>
+      )}
+
+      {r.education?.length > 0 && (
+        <section>
+          <h2>Education</h2>
+          {r.education.map((e) => (
+            <article class="item">
+              <div class="itemHead">
+                <div>
+                  <h3>{e.degree}</h3>
+                  <div class="sub">{e.institution} • {e.location}</div>
+                </div>
+                <div class="dates">{e.graduation_date}</div>
+              </div>
+              {e.notes && <p class="note">{e.notes}</p>}
+            </article>
+          ))}
+        </section>
+      )}
+
+      {r.publications?.length > 0 && (
+        <section>
+          <h2>Publications</h2>
+          {r.publications.map((p) => (
+            <article class="item">
+              <h3>{p.title}</h3>
+              <div class="sub">{p.venue} • {p.year}</div>
+              {p.url && <a class="link" href={p.url} target="_blank" rel="noopener">DOI</a>}
+            </article>
+          ))}
+        </section>
+      )}
+    </main>
+  </body>
+</html>
+

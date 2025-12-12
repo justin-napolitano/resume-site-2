@@ -1,0 +1,29 @@
+:root { color-scheme: light dark; }
+body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+.page { max-width: 980px; margin: 0 auto; padding: 32px 18px 64px; }
+.top { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+h1 { margin: 0; font-size: 34px; line-height: 1.1; }
+.meta { margin-top: 8px; opacity: .8; display: flex; gap: 12px; flex-wrap: wrap; }
+.link { text-decoration: none; opacity: .9; }
+.actions { display: flex; gap: 10px; }
+.btn { padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(127,127,127,.45); text-decoration: none; }
+.btn:hover { transform: translateY(-1px); }
+h2 { margin: 26px 0 10px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: .75; }
+.item { padding: 14px 0; border-top: 1px solid rgba(127,127,127,.25); }
+.itemHead { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+h3 { margin: 0; font-size: 16px; }
+.sub { margin-top: 3px; opacity: .75; }
+.dates { opacity: .75; font-size: 13px; white-space: nowrap; }
+ul { margin: 10px 0 0 18px; }
+p { margin: 10px 0 0; line-height: 1.55; }
+.note { opacity: .8; }
+.chips { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { padding: 6px 10px; border: 1px solid rgba(127,127,127,.35); border-radius: 999px; font-size: 13px; opacity: .95; }
+.skillBlock { padding-top: 10px; }
+.skillTitle { margin: 0 0 8px; font-size: 14px; opacity: .9; }
+
+@media print {
+  .actions { display: none; }
+  .page { padding: 0; }
+}
+
