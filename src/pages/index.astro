@@ -5,6 +5,34 @@ const SHOW_EMAIL = false; // you included it in JSON; flip true if you want it v
 const SHOW_PHONE = false; // flip true if you want it visible
 
 const h = r.header;
+const DOT_COUNT = 5;
+const highlightSkills = r.skill_highlights ?? [];
+const highlightNames = new Set(
+  highlightSkills.flatMap((s) => s.items?.map((i) => i.name) ?? [])
+);
+const fullSkillAreas = (r.skills ?? [])
+  .map((area) => ({
+    ...area,
+    items: area.items?.filter((i) => !highlightNames.has(i.name)) ?? [],
+  }))
+  .filter((area) => area.items.length > 0);
+const levelMap: Record<string, string> = {
+  "5": "Principal",
+  "4": "Senior",
+  "3": "Mid-level",
+  "2": "Associate",
+  "1": "Foundational",
+};
+
+const clampYearsForDots = (years: number = 0) => {
+  const safeYears = Math.floor(years);
+  return Math.max(0, Math.min(DOT_COUNT, safeYears));
+};
+
+const labelForLevel = (level: number | undefined) => {
+  if (typeof level === "undefined") return "";
+  return levelMap[String(level)] ?? `Level ${level}`;
+};
 ---
 
 <html lang="en">
@@ -54,6 +82,36 @@ const h = r.header;
           <ul>
             {r.summary.map((s) => <li>{s}</li>)}
           </ul>
+        </section>
+      )}
+
+      {highlightSkills?.length > 0 && (
+        <section class="skillsSection">
+          <h2>Platform Highlights</h2>
+          <p class="skillLegend">1 dot = 1 year of experience</p>
+
+          <div class="skillsGrid">
+            {highlightSkills.map((s) => (
+              <article class="skillBlock">
+                <h3 class="skillTitle">{s.area}</h3>
+                <ul class="skillRows">
+                  {s.items.map((i) => (
+                    <li class="skillRow">
+                      <div class="skillInfo">
+                        <span class="skillName">{i.name}</span>
+                        <span class="skillLevel">{labelForLevel(i.level)}</span>
+                      </div>
+                      <div class="skillDots" aria-label={`${i.name} — ${i.years} yrs`} title={`${i.years} yrs • level ${i.level}`}>
+                        {Array.from({ length: DOT_COUNT }).map((_, idx) => (
+                          <span class={`dot${idx < clampYearsForDots(i.years) ? " filled" : ""}`}></span>
+                        ))}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </section>
       )}
 
@@ -112,25 +170,6 @@ const h = r.header;
         </section>
       )}
 
-      {r.skills?.length > 0 && (
-        <section>
-          <h2>Skills</h2>
-
-          {r.skills.map((s) => (
-            <article class="skillBlock">
-              <h3 class="skillTitle">{s.area}</h3>
-              <div class="chips">
-                {s.items.map((i) => (
-                  <span class="chip" title={`${i.years} yrs • level ${i.level}`}>
-                    {i.name}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </section>
-      )}
-
       {r.education?.length > 0 && (
         <section>
           <h2>Education</h2>
@@ -161,7 +200,35 @@ const h = r.header;
           ))}
         </section>
       )}
+
+      {fullSkillAreas.length > 0 && (
+        <section class="skillGraph">
+          <h2>Full Skill Graph</h2>
+          <p class="skillLegend">1 dot = 1 year of experience • includes every tool beyond the highlights above</p>
+          <div class="skillsGrid skillGraphGrid">
+            {fullSkillAreas.map((s) => (
+              <article class="skillBlock">
+                <h3 class="skillTitle">{s.area}</h3>
+                <ul class="skillRows">
+                  {s.items.map((i) => (
+                    <li class="skillRow">
+                      <div class="skillInfo">
+                        <span class="skillName">{i.name}</span>
+                        <span class="skillLevel">{labelForLevel(i.level)}</span>
+                      </div>
+                      <div class="skillDots" aria-label={`${i.name} — ${i.years} yrs`} title={`${i.years} yrs • level ${i.level}`}>
+                        {Array.from({ length: DOT_COUNT }).map((_, idx) => (
+                          <span class={`dot${idx < clampYearsForDots(i.years) ? " filled" : ""}`}></span>
+                        ))}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   </body>
 </html>
-

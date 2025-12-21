@@ -337,17 +337,40 @@
   ],
   "experience": [
     {
+      "id": "data-engineer-adventhealth",
+      "title": "Data Engineer",
+      "company": "AdventHealth",
+      "location": "Orlando, Florida",
+      "start": "Aug 2025",
+      "end": "Present",
+      "bullets": [
+        "Stand up Azure Data Factory + Synapse pipelines that land Epic Clarity extracts into governed models for quality and operations teams.",
+        "Build Power BI and Looker Studio dashboards that surface heart failure and readmission metrics for service line leaders within 24 hours of discharge.",
+        "Harden dbt and SQL transformations that reconcile EDW, Vizient, and bedside documentation into one source of truth for CFO and CMO briefs.",
+        "Partner with nursing, cardiology, and digital to automate alerts, reducing manual spreadsheet updates by 60% across the network."
+      ],
+      "technologies": [
+        "Azure Data Factory",
+        "Synapse",
+        "Power BI",
+        "Looker Studio",
+        "dbt",
+        "Epic Clarity",
+        "SQL"
+      ]
+    },
+    {
       "id": "business-analyst-ii-adventhealth",
       "title": "Business Analyst II",
       "company": "AdventHealth",
       "location": "Orlando, Florida",
       "start": "Jan 2025",
-      "end": "Present",
+      "end": "Aug 2025",
       "bullets": [
-        "Partner with clinical and operations teams to define data requirements for performance and quality improvement initiatives.",
-        "Design SQL-based reporting pipelines and Power BI dashboards for inpatient care and readmissions metrics.",
-        "Support data validation and reconciliation efforts across Epic Clarity and enterprise data warehouse (EDW) environments.",
-        "Contribute to cross-functional analytic projects focused on cost reduction, patient outcomes, and digital health integration."
+        "Partnered with clinical and operations teams to define data requirements for performance and quality improvement initiatives.",
+        "Designed SQL-based reporting pipelines and Power BI dashboards for inpatient care and readmissions metrics.",
+        "Supported data validation and reconciliation efforts across Epic Clarity and EDW environments.",
+        "Contributed to cross-functional analytic projects focused on cost reduction, patient outcomes, and digital health integration."
       ],
       "technologies": [
         "Epic Clarity",
@@ -358,44 +381,29 @@
       ]
     },
     {
-      "id": "data-engineer-penske",
-      "title": "Data Engineer",
+      "id": "data-analytics-engineer-penske",
+      "title": "Data & Analytics Engineer",
       "company": "Penske Media Corporation",
       "location": "Los Angeles, California",
-      "start": "Apr 2023",
+      "start": "Apr 2022",
       "end": "Apr 2024",
       "bullets": [
-        "Led evaluation of six AI and data vendors, assessing integration, latency, and scalability to guide 5M USD in platform investment decisions.",
-        "Fine-tuned large language models using Python, improving generative quality by 10% based on editorial scoring and feedback loops.",
-        "Built twelve Python- and SQL-based reporting pipelines in GCP, integrating with Looker to deliver topic insights across thirty media brands."
+        "Led evaluation of six AI and data vendors, assessing integration, latency, and scalability to guide $5M in platform investment decisions.",
+        "Fine-tuned large language models using Python, improving generative quality by 10% based on editorial scoring loops.",
+        "Built twelve Python- and SQL-based reporting pipelines in GCP, integrating with Looker to deliver topic insights across thirty media brands.",
+        "Increased subscription conversion rates by 5% through KPI reporting in GCP that powered targeted marketing runs.",
+        "Modeled first-party user behavior in Treasure Data CDP using 150+ signals to support retention and exec briefings across Rolling Stone, Billboard, and more."
       ],
       "technologies": [
         "Python",
         "SQL",
         "GCP",
         "Looker",
-        "Large language models",
-        "AI vendor evaluation"
-      ]
-    },
-    {
-      "id": "analytics-engineer-penske",
-      "title": "Analytics Engineer",
-      "company": "Penske Media Corporation",
-      "location": "Los Angeles, California",
-      "start": "Apr 2022",
-      "end": "Apr 2023",
-      "bullets": [
-        "Increased subscription conversion rates by 5% through advanced KPI reporting built in GCP to support targeted marketing campaigns.",
-        "Enhanced retention strategy by modeling first-party user behavior in Treasure Data CDP using over 150 engagement signals and billions of records.",
-        "Advised senior executives on content and audience strategy across twenty-five national brands\u2014including Rolling Stone and Billboard\u2014supporting $1B in annual revenue."
-      ],
-      "technologies": [
-        "GCP",
         "Treasure Data CDP",
+        "Large language models",
+        "AI vendor evaluation",
         "Subscription analytics",
-        "Customer segmentation",
-        "Executive reporting"
+        "Customer segmentation"
       ]
     },
     {
@@ -499,6 +507,135 @@
       ],
       "doi": "10.1515/peps-2019-0036",
       "url": "https://doi.org/10.1515/peps-2019-0036"
+    }
+  ],
+  "skill_highlights": [
+    {
+      "area": "Warehousing & Modeling",
+      "id": "skill-highlight-warehousing",
+      "items": [
+        {
+          "name": "Snowflake",
+          "level": 4,
+          "years": 2,
+          "tags": [
+            "cloud data warehouse"
+          ]
+        },
+        {
+          "name": "BigQuery",
+          "level": 5,
+          "years": 3,
+          "tags": [
+            "SQL",
+            "columnar storage",
+            "GCP"
+          ]
+        },
+        {
+          "name": "dbt",
+          "level": 3,
+          "years": 1.5,
+          "tags": [
+            "data modeling",
+            "ELT"
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": 5,
+          "years": 7,
+          "tags": [
+            "PostgreSQL",
+            "MySQL",
+            "ETL"
+          ]
+        }
+      ]
+    },
+    {
+      "area": "Cloud & Deployment",
+      "id": "skill-highlight-cloud",
+      "items": [
+        {
+          "name": "Azure",
+          "level": 4,
+          "years": 2,
+          "tags": [
+            "Data Factory",
+            "Synapse"
+          ]
+        },
+        {
+          "name": "GCP",
+          "level": 5,
+          "years": 4,
+          "tags": [
+            "BigQuery",
+            "Cloud Functions",
+            "GCS"
+          ]
+        },
+        {
+          "name": "Docker",
+          "level": 4,
+          "years": 3,
+          "tags": [
+            "Compose",
+            "self-hosted apps"
+          ]
+        },
+        {
+          "name": "Cloud Functions",
+          "level": 3,
+          "years": 2,
+          "tags": [
+            "Cloud Functions",
+            "serverless queues"
+          ]
+        }
+      ]
+    },
+    {
+      "area": "BI & Activation",
+      "id": "skill-highlight-bi",
+      "items": [
+        {
+          "name": "Power BI",
+          "level": 4,
+          "years": 2,
+          "tags": [
+            "DAX",
+            "enterprise BI"
+          ]
+        },
+        {
+          "name": "Looker",
+          "level": 3,
+          "years": 1,
+          "tags": [
+            "embedded analytics"
+          ]
+        },
+        {
+          "name": "Treasure Data CDP",
+          "level": 4,
+          "years": 2,
+          "tags": [
+            "audience activation",
+            "segmentation"
+          ]
+        },
+        {
+          "name": "APIs & Web Apps",
+          "level": 3,
+          "years": 2,
+          "tags": [
+            "Next.js",
+            "internal portals"
+          ]
+        }
+      ]
     }
   ]
 }
