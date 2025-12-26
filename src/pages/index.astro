@@ -24,6 +24,86 @@ const levelMap: Record<string, string> = {
   "1": "Foundational",
 };
 
+const THEME_STORAGE_KEY = "resume-site-theme";
+const themeToggleButtonId = "theme-toggle-button";
+const themeToggleLabelId = "theme-toggle-label";
+const themeStorageKeyLiteral = JSON.stringify(THEME_STORAGE_KEY);
+const themeToggleButtonIdLiteral = JSON.stringify(themeToggleButtonId);
+const themeToggleLabelIdLiteral = JSON.stringify(themeToggleLabelId);
+
+const themePrefScript = `(() => {
+	const STORAGE_KEY = ${themeStorageKeyLiteral};
+	try {
+		const stored = localStorage.getItem(STORAGE_KEY);
+		if (stored === 'dark' || stored === 'light') {
+			document.documentElement.dataset.theme = stored;
+		} else {
+			document.documentElement.removeAttribute('data-theme');
+		}
+	} catch (error) {
+		console.warn('Theme preference unavailable', error);
+	}
+})();`;
+
+const themeToggleScript = `(() => {
+	const STORAGE_KEY = ${themeStorageKeyLiteral};
+	const modes = ['auto', 'light', 'dark'];
+	const root = document.documentElement;
+	const labelId = ${themeToggleLabelIdLiteral};
+	const buttonId = ${themeToggleButtonIdLiteral};
+
+	const safeGet = () => {
+		try {
+			return localStorage.getItem(STORAGE_KEY);
+		} catch (error) {
+			console.warn('Theme preference unavailable', error);
+			return null;
+		}
+	};
+
+	const safeSet = (value) => {
+		try {
+			localStorage.setItem(STORAGE_KEY, value);
+		} catch (error) {
+			console.warn('Theme preference unavailable', error);
+		}
+	};
+
+	const applyMode = (mode) => {
+		if (mode === 'dark' || mode === 'light') {
+			root.dataset.theme = mode;
+		} else {
+			root.removeAttribute('data-theme');
+		}
+		const label = document.getElementById(labelId);
+		if (label) {
+			label.textContent = mode;
+		}
+	};
+
+	const init = () => {
+		const button = document.getElementById(buttonId);
+		if (!button) return;
+		let current = safeGet() ?? 'auto';
+		if (!modes.includes(current)) {
+			current = 'auto';
+		}
+		applyMode(current);
+		button.addEventListener('click', () => {
+			const nextIndex = (modes.indexOf(current) + 1) % modes.length;
+			current = modes[nextIndex];
+			safeSet(current);
+			applyMode(current);
+		});
+	};
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init, { once: true });
+	} else {
+		init();
+	}
+})();`;
+
 const clampYearsForDots = (years: number = 0) => {
   const safeYears = Math.floor(years);
   return Math.max(0, Math.min(DOT_COUNT, safeYears));
@@ -52,6 +132,7 @@ const labelForLevel = (level: number | undefined) => {
     <meta property="og:image" content="https://www.justin-napolitano.com/images/og.png" />
 
     <link rel="stylesheet" href="/resume.css" />
+    <script is:inline set:html={themePrefScript}></script>
   </head>
 
   <body>
@@ -230,5 +311,12 @@ const labelForLevel = (level: number | undefined) => {
         </section>
       )}
     </main>
+    <div class="theme-toggle" aria-live="polite">
+      <button id={themeToggleButtonId} type="button">
+        <span class="theme-toggle__status">Theme</span>
+        <span id={themeToggleLabelId} class="theme-toggle__label">auto</span>
+      </button>
+    </div>
+    <script is:inline set:html={themeToggleScript}></script>
   </body>
 </html>
