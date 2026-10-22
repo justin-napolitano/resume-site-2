@@ -433,3 +433,13 @@ a { overflow-wrap:anywhere; }
  .itemHead h3,.skillTitle { color:var(--text-link); }
  .theme-toggle button:hover,.theme-toggle button:focus-visible { border-color:var(--accent); color:var(--accent); }
 }
+
+/* Readability: long copy uses ink; short labels retain green. */
+@media screen {
+ html { background:#356349; }
+ body { min-height:100svh; font-size:16px; line-height:1.65; }
+ p,li { color:var(--text-primary); line-height:1.65; }
+ .meta,.dates,.skillLegend,.skillLevel { color:var(--text-link); }
+ .site-title { color:var(--text-primary); }
+ .site-header a:not(.site-title) { color:var(--text-link); }
+}
