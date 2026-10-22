@@ -7,3 +7,5 @@ Apply pinned littlelink brand contract ae3e9062d8e06a1158af74a29cbd8b549d82b3e2 
 Scope: public/resume.css, public/theme/design-tokens.css, src/pages/index.astro, public/fonts/*, brand-plan.md, design-qa.md. Validate npm run build and responsive/keyboard/theme/print behavior with authorized browser. Rollback focused commit; no data migration, dependency or integration change.
 
 Validation: npm run build passes. Existing index.astro.bak unsupported-file and Astro internal-helper unused import warnings remain. No facts or privacy flags changed. No new dependency or external font request.
+
+Canonical download follow-up: export this page through the shared existing Chromium exporter using its own active JSON and SHOW_EMAIL/SHOW_PHONE flags. Preserve every source experience bullet, inspect print page breaks and selectable text, and complete approved responsive browser QA. No upstream/pit PDF substitution. See docs/pdf-export-evidence.md.
