@@ -10,3 +10,6 @@ Approved Chromium browser QA captured390/768/1440/320, keyboard focus, CSS200%zo
 
 
 Green refinement export (2026-10-22): 5 pages, 275355 bytes, SHA256 30d07cc9f3602199301788a74b3e9970d7f9b74c00f0b03c2ab416b2464c8267. Native extraction retains all19 source bullets and excludes private phone; legacy email remains hidden. Both exports use verified unused loopback previews and their own source name. No career-source or privacy-flag edits.
+
+
+Readability refinement final own-DOM PDF: 5pages, 275355bytes, SHA256 d3d197e7acf4f12082d72bdaf77c3f2063127188fd81c1ea18625b9b9b05160d. Native extraction rechecked on this exact final public artifact: all19 own-source bullets, private phone absent, canonical email retained/legacy email hidden. Monochrome print preserves readable static fonts; no source facts changed.
