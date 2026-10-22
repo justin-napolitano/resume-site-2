@@ -423,3 +423,13 @@ a { overflow-wrap:anywhere; }
  .skillName { font-size:9pt; overflow-wrap:anywhere; }
  .skillDots::after { display:block; white-space:normal; overflow-wrap:anywhere; }
 }
+
+/* User-approved green accents: interaction and meaningful role labels only. */
+@media screen {
+ ::selection { background:#e2ecdf; color:#244b36; }
+ a:hover,a:focus-visible { background:var(--surface-card-muted); color:var(--accent-strong); }
+ a:active { color:var(--accent-strong); }
+ .btn:hover,.btn:focus-visible { background:var(--surface-card-muted); color:var(--accent-strong); border-color:var(--accent); }
+ .itemHead h3,.skillTitle { color:var(--text-link); }
+ .theme-toggle button:hover,.theme-toggle button:focus-visible { border-color:var(--accent); color:var(--accent); }
+}
