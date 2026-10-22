@@ -137,6 +137,7 @@ const labelForLevel = (level: number | undefined) => {
 
   <body>
     <main class="page">
+      <div class="site-header"><a class="site-title" href="/">Resume</a><a href="/resume.pdf" download>Download PDF</a></div>
       <header class="top">
         <div class="id">
           <h1>{h.name}</h1>
@@ -152,9 +153,7 @@ const labelForLevel = (level: number | undefined) => {
           </div>
         </div>
 
-        <div class="actions">
-          <a class="btn" href="/resume.pdf" download>Download PDF</a>
-        </div>
+
       </header>
 
       {r.summary?.length > 0 && (
