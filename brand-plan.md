@@ -9,3 +9,8 @@ Scope: public/resume.css, public/theme/design-tokens.css, src/pages/index.astro,
 Validation: npm run build passes. Existing index.astro.bak unsupported-file and Astro internal-helper unused import warnings remain. No facts or privacy flags changed. No new dependency or external font request.
 
 Canonical download follow-up: export this page through the shared existing Chromium exporter using its own active JSON and SHOW_EMAIL/SHOW_PHONE flags. Preserve every source experience bullet, inspect print page breaks and selectable text, and complete approved responsive browser QA. No upstream/pit PDF substitution. See docs/pdf-export-evidence.md.
+
+
+## Current user override: restrained green accent
+
+2026-10-22: user explicitly requested the resume hover/selection green across the two resumes, list site and Selected Projects only, replacing grey/slate secondary text accents. This overrides the earlier slate color direction, while the approved 08 reference still governs layout, scale and text-only titles. Use #356349 green, #244b36 deeper interaction green, #e2ecdf sage highlighting, #4e6550 secondary text and #cfd9c8 fine rules on paper. Legacy dark mode uses #b8d4b3 / #d5e8cf on ink and #314333 highlight. Preserve ink body copy, warm paper, neutral structural rules, all facts/contact flags/URLs and existing interactions. Capture desktop/mobile plus real hover/focus/native selection, regenerate each PDF from its own DOM, and hold deployment until coordinator reviews PNGs. No dependencies, security controls or data authority change.
