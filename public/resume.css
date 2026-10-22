@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap');
 @import url('/theme/design-tokens.css');
+@font-face { font-family: Inter; src: url('/fonts/Inter-Variable.ttf') format('truetype'); font-weight:100 900; font-display:swap; }
+@font-face { font-family: 'Source Serif 4'; src: url('/fonts/SourceSerif4-Variable.ttf') format('truetype'); font-weight:200 900; font-display:swap; }
 
 * {
   box-sizing: border-box;
@@ -8,7 +9,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   color: var(--text-primary);
   background: var(--page-background);
   padding: 32px 0 72px;
@@ -61,7 +62,7 @@ h1 {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  font-family: 'Inter', 'Space Grotesk', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
   color: var(--text-muted);
 }
@@ -357,4 +358,68 @@ p {
   .chips span {
     border-color: #000;
   }
+}
+
+/* Approved Index / Simplified adaptation; preserve functional theme controls. */
+body { padding: 28px 0 64px; font-size:16px; }
+.page { max-width:1040px; padding:0 clamp(20px,4vw,48px) 32px; background:transparent; border:0; border-radius:0; box-shadow:none; backdrop-filter:none; }
+.site-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-bottom:18px; margin-bottom:28px; border-bottom:1px solid var(--border-soft); }
+.site-title { font-size:22px; font-weight:500; text-decoration:none; }
+.site-header a { min-height:44px; display:inline-flex; align-items:center; }
+h1 { font-family:'Source Serif 4',Georgia,serif; font-size:28px; line-height:1.2; font-weight:400; }
+h2 { font-size:22px; font-weight:500; letter-spacing:normal; text-transform:none; color:var(--text-primary); padding-bottom:10px; border-bottom:1px solid var(--border-soft); }
+h3 { font-size:18px; font-weight:500; }
+.top { gap:20px; }
+.btn { border:1px solid var(--border-strong); border-radius:2px; background:transparent; color:var(--text-primary); text-transform:none; letter-spacing:normal; min-height:44px; font-size:14px; }
+.btn:hover { transform:none; background:var(--surface-card-muted); }
+.chip,.chips li,.chips span { border-radius:2px; }
+.skillBlock { border:0; border-top:1px solid var(--border-soft); padding:16px 0; border-radius:0; box-shadow:none; background:transparent; }
+.dot.filled { box-shadow:none; }
+.theme-toggle button,.theme-toggle__label { border-radius:2px; box-shadow:none; letter-spacing:normal; }
+:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+a { overflow-wrap:anywhere; }
+@media(max-width:600px) { .page { padding:0 20px 32px; } .skillsGrid { grid-template-columns:minmax(0,1fr); } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none!important; animation:none!important; } }
+@media print { .site-header { display:none; } .page { padding:0; } h2 { font-size:14pt; } h1 { font-size:20pt; } }
+
+/* Print local JSON facts with the existing public contact flags. */
+@media print {
+ :root,:root[data-theme='dark'],:root[data-theme='light'] {
+  --text-primary:#25251f; --text-secondary:#25251f; --text-muted:#45453f;
+  --text-label:#45453f; --text-soft:#45453f; --text-link:#25251f;
+  --border-soft:#cbc8bf; --border-strong:#cbc8bf; --surface-card:transparent;
+ }
+ body { font-size:10.5pt; line-height:1.4; }
+ h1 { font-size:20pt; }
+ h2 { font-size:13pt; margin:0 0 7pt; padding-bottom:5pt; break-after:avoid; }
+ h3 { font-size:11pt; break-after:avoid; }
+ section,.skillsSection,.skillGraph { margin-top:14pt; }
+ .meta,.sub,.dates { font-size:9pt; margin-top:5pt; }
+ ul { margin-top:5pt; }
+ li,p { line-height:1.4; }
+ .item { padding:9pt 0; break-inside:avoid; }
+ .skillsGrid,.skillGraphGrid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:7pt 12pt; }
+ .skillBlock { padding:6pt 0 0; break-inside:avoid; }
+ .skillTitle { font-size:10pt; }
+ .skillLegend { margin:0 0 8pt; font-size:9pt; }
+ .skillRows { gap:0; }
+ .skillRow { display:block; padding:4pt 0; break-inside:avoid; }
+ .skillInfo { gap:2pt; }
+ .skillInfo strong { font-size:9pt; }
+ .skillLevel { font-size:8pt; letter-spacing:normal; }
+ .skillDots { display:block; width:auto; height:auto; }
+ .skillDots .dot { display:none; }
+ .skillDots::after { content:attr(aria-label); font-size:8pt; color:var(--text-muted); }
+ .chips { gap:3pt; margin-top:5pt; }
+ .chip,.chips li,.chips span { font-size:8pt; padding:2pt 4pt; }
+ .itemHead { gap:5pt; }
+ a { overflow-wrap:anywhere; }
+}
+
+@media print {
+ body,.meta { font-family:Arial,Helvetica,sans-serif; }
+ h1 { font-family:Georgia,'Times New Roman',serif; }
+ .skillBlock,.skillRow,.skillInfo { min-width:0; }
+ .skillName { font-size:9pt; overflow-wrap:anywhere; }
+ .skillDots::after { display:block; white-space:normal; overflow-wrap:anywhere; }
 }
