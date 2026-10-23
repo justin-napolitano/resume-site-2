@@ -5,6 +5,8 @@ const SHOW_EMAIL = false; // you included it in JSON; flip true if you want it v
 const SHOW_PHONE = false; // flip true if you want it visible
 
 const h = r.header;
+const currentRole = r.experience.find((role) => role.end === 'Present');
+const professionalSummary = 'Building enterprise software that helps teams discover, understand, and use their data.';
 const DOT_COUNT = 5;
 const highlightSkills = r.skill_highlights ?? [];
 const highlightNames = new Set(
@@ -122,12 +124,12 @@ const labelForLevel = (level: number | undefined) => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{h.name} — Resume</title>
 
-    <meta name="description" content={`${h.name} — Resume`} />
+    <meta name="description" content={`Product Engineer. ${professionalSummary}`} />
     <link rel="canonical" href="https://www.justin-napolitano.com/resume/" />
 
     <!-- OpenGraph (optional but nice) -->
     <meta property="og:title" content={`${h.name} — Resume`} />
-    <meta property="og:description" content={`${h.name} — Resume`} />
+    <meta property="og:description" content={`Product Engineer. ${professionalSummary}`} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.justin-napolitano.com/resume/" />
     <meta property="og:image" content="https://www.justin-napolitano.com/images/og.png" />
@@ -142,6 +144,7 @@ const labelForLevel = (level: number | undefined) => {
       <header class="top">
         <div class="id">
           <h1>{h.name}</h1>
+          <p>{currentRole?.title}</p>
           <div class="meta">
             {h.location && <span>{h.location}</span>}
             {(SHOW_EMAIL && h.email) && <span> • <a href={`mailto:${h.email}`}>{h.email}</a></span>}
@@ -169,6 +172,7 @@ const labelForLevel = (level: number | undefined) => {
       {highlightSkills?.length > 0 && (
         <section class="skillsSection">
           <h2>Platform Highlights</h2>
+          <p><strong>Current focus:</strong> {currentRole?.technologies.join(' · ')}</p>
           <p class="skillLegend">1 dot = 1 year of experience</p>
 
           <div class="skillsGrid">
@@ -206,7 +210,7 @@ const labelForLevel = (level: number | undefined) => {
                   <h3>{x.title} — {x.company}</h3>
                   <div class="sub">{x.location}</div>
                 </div>
-                <div class="dates">{x.start} — {x.end}</div>
+                <div class="dates">{[x.start, x.end].filter(Boolean).join(' — ')}</div>
               </div>
               {x.bullets?.length > 0 && (
                 <ul>
