@@ -10,9 +10,7 @@
     "linkedin_url": "https://www.linkedin.com/in/justin-napolitano"
   },
   "summary": [
-    "Business and clinical data analyst specializing in healthcare analytics, Epic Clarity SQL, and performance improvement.",
-    "Experienced with heart failure quality metrics, readmissions, and enterprise BI tooling including Power BI and GCP-based stacks.",
-    "Bridges technical and non-technical stakeholders to deliver data products that improve outcomes and reduce costs."
+    "Building enterprise software that helps teams discover, understand, and use their data."
   ],
   "education": [
     {
@@ -338,25 +336,22 @@
   "experience": [
     {
       "id": "data-engineer-adventhealth",
-      "title": "Data Engineer",
+      "title": "Product Engineer",
       "company": "AdventHealth",
       "location": "Orlando, Florida",
-      "start": "Aug 2025",
+      "start": "",
       "end": "Present",
       "bullets": [
-        "Stand up Azure Data Factory + Synapse pipelines that land Epic Clarity extracts into governed models for quality and operations teams.",
-        "Build Power BI and Looker Studio dashboards that surface heart failure and readmission metrics for service line leaders within 24 hours of discharge.",
-        "Harden dbt and SQL transformations that reconcile EDW, Vizient, and bedside documentation into one source of truth for CFO and CMO briefs.",
-        "Partner with nursing, cardiology, and digital to automate alerts, reducing manual spreadsheet updates by 60% across the network."
+        "Build an internal replacement for Collibra, developing backend services in Go.",
+        "Deploy and manage application workloads on Kubernetes.",
+        "Connect services through Azure Service Bus queues for asynchronous processing."
       ],
       "technologies": [
-        "Azure Data Factory",
-        "Synapse",
-        "Power BI",
-        "Looker Studio",
-        "dbt",
-        "Epic Clarity",
-        "SQL"
+        "Go",
+        "Kubernetes",
+        "Azure Service Bus",
+        "Backend Services",
+        "Asynchronous Processing"
       ]
     },
     {
@@ -449,7 +444,7 @@
     {
       "id": "heart-failure-quality-metrics-dashboard",
       "name": "Heart Failure Quality Metrics Dashboard",
-      "context": "AdventHealth \u2013 Epic Clarity / Power BI",
+      "context": "AdventHealth – Epic Clarity / Power BI",
       "technologies": [
         "Epic Clarity",
         "SQL",
@@ -465,7 +460,7 @@
     {
       "id": "o-e-mortality-analysis",
       "name": "Observed-to-Expected Mortality Analysis",
-      "context": "AdventHealth \u2013 Vizient data",
+      "context": "AdventHealth – Vizient data",
       "technologies": [
         "Vizient clinical data",
         "SQL",
