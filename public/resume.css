@@ -426,7 +426,7 @@ a { overflow-wrap:anywhere; }
 
 /* User-approved green accents: interaction and meaningful role labels only. */
 @media screen {
- ::selection { background:#e2ecdf; color:#244b36; }
+ ::selection { background:#fff0f2; color:#d01527; }
  a:hover,a:focus-visible { background:var(--surface-card-muted); color:var(--accent-strong); }
  a:active { color:var(--accent-strong); }
  .btn:hover,.btn:focus-visible { background:var(--surface-card-muted); color:var(--accent-strong); border-color:var(--accent); }
@@ -442,4 +442,50 @@ a { overflow-wrap:anywhere; }
  .meta,.dates,.skillLegend,.skillLevel { color:var(--text-link); }
  .site-title { color:var(--text-primary); }
  .site-header a:not(.site-title) { color:var(--text-link); }
+}
+
+/* Shared approved palette: midpoint-red text accents, green native scroll canvas. */
+@media screen {
+  :root, :root[data-theme], :root[data-brand-theme] {
+    --brand-accent: #d01527;
+    --brand-text-accent: var(--brand-accent);
+    --brand-highlight: #fff0f2;
+    --brand-canvas: #356349;
+    --brand-page: var(--page-background);
+    --accent-contrast: #fcfbf8;
+    --accent-muted: var(--brand-highlight);
+    --accent: var(--brand-accent);
+    --accent-hover: var(--brand-accent);
+    --accent-strong: var(--brand-accent);
+    --accent-soft: var(--brand-highlight);
+    --accent-2: var(--brand-accent);
+    --accent-3: var(--brand-accent);
+    --text-link: var(--brand-text-accent);
+  }
+  html, body { background: var(--brand-canvas) !important; overscroll-behavior: auto; }
+  .brand-site-surface { width:100%; min-height:100svh; background:var(--brand-page); display:flow-root; }
+  ::selection { background:var(--brand-highlight); color:var(--brand-accent); }
+  mark { background:var(--brand-highlight); color:var(--brand-accent); }
+  a:where(:not(.button):not(.button-link):not(.cta):not(.button-primary):not(.button-secondary):not([class*="bg-"])):hover,
+  nav a:hover, nav a[aria-current="page"] { color:var(--brand-text-accent); text-decoration-color:var(--brand-accent); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+    outline:2px solid var(--brand-accent); outline-offset:4px;
+  }
+  .button-primary:hover, .cta.primary:hover, .button-link:not(.secondary):hover {
+    background:var(--brand-accent); border-color:var(--brand-accent); color:var(--brand-page);
+  }
+  .filter-pill-active { color:var(--brand-accent); background:var(--brand-highlight); border-color:var(--brand-accent); }
+}
+
+@media screen {
+  :root[data-theme='dark'] { --brand-text-accent:#ff8792; }
+}
+@media screen and (prefers-color-scheme:dark) {
+  :root:not([data-theme]) { --brand-text-accent:#ff8792; }
+}
+
+@media screen {
+  body { padding:0; }
+  .brand-site-surface { padding:28px 0 64px; }
+  .btn:hover,.btn:focus-visible { background:var(--brand-highlight); color:var(--brand-accent); }
 }
