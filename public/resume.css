@@ -426,7 +426,7 @@ a { overflow-wrap:anywhere; }
 
 /* User-approved green accents: interaction and meaningful role labels only. */
 @media screen {
- ::selection { background:#fff0f2; color:#d01527; }
+ ::selection { background:#e5eee7; color:#285447; }
  a:hover,a:focus-visible { background:var(--surface-card-muted); color:var(--accent-strong); }
  a:active { color:var(--accent-strong); }
  .btn:hover,.btn:focus-visible { background:var(--surface-card-muted); color:var(--accent-strong); border-color:var(--accent); }
@@ -444,12 +444,12 @@ a { overflow-wrap:anywhere; }
  .site-header a:not(.site-title) { color:var(--text-link); }
 }
 
-/* Shared approved palette: midpoint-red text accents, green native scroll canvas. */
+/* Shared approved palette: deep-forest text accents, green native scroll canvas. */
 @media screen {
   :root, :root[data-theme], :root[data-brand-theme] {
-    --brand-accent: #d01527;
+    --brand-accent: #285447;
     --brand-text-accent: var(--brand-accent);
-    --brand-highlight: #fff0f2;
+    --brand-highlight: #e5eee7;
     --brand-canvas: #356349;
     --brand-page: var(--page-background);
     --accent-contrast: #fcfbf8;
@@ -478,10 +478,10 @@ a { overflow-wrap:anywhere; }
 }
 
 @media screen {
-  :root[data-theme='dark'] { --brand-text-accent:#ff8792; }
+  :root[data-theme='dark'] { --brand-text-accent:#acd0b8; }
 }
 @media screen and (prefers-color-scheme:dark) {
-  :root:not([data-theme]) { --brand-text-accent:#ff8792; }
+  :root:not([data-theme]) { --brand-text-accent:#acd0b8; }
 }
 
 @media screen {
